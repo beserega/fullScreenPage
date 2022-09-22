@@ -1,3 +1,5 @@
+window.onload = function () {
+
 const screens = document.querySelectorAll('[data-screen]');
 const links = document.querySelectorAll('[data-link]');
 
@@ -66,3 +68,4 @@ function changeBg() {
       });
    }
 }
+}// onload
