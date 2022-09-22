@@ -52,8 +52,8 @@ function changeBg() {
       });
    }
 
-   screens.forEach((screen) => {
-      if(screens.length > 0) {
+   if(screens.length > 0) {
+      screens.forEach((screen) => {
          if (window.innerWidth > 768) {
             screen.style.display = 'none';
             screens[0].style.display = 'block';
