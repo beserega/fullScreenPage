@@ -1,7 +1,3 @@
-// Импорт функционала ==============================================================================================================================================================================================================================================================================================================================
-// import { isMobile } from "./functions.js";
-// import { formsModules } from "./forms/forms.js";
-
 const screens = document.querySelectorAll('[data-screen]');
 const links = document.querySelectorAll('[data-link]');
 
@@ -25,7 +21,7 @@ function replaceBg(id) {
 
 window.addEventListener('resize', changeBg);
 
-function ggg() {
+function clickLinkKloseMenu() {
    links.forEach((link) => {
       link.addEventListener('click', () => {
          if (window.innerWidth < 768) {
@@ -34,7 +30,7 @@ function ggg() {
       });
    });
 }
-ggg();
+clickLinkKloseMenu();
 
 function changeBg() {
    links.forEach((link) => {
@@ -59,11 +55,5 @@ function changeBg() {
       } else {
          screen.style.display = 'block';
       }
-
-      // screens[0].style.display = 'block';
-      // screen.addEventListener('click', () => {
-      //    document.documentElement.classList.remove('menu-open');
-      // });
    });
 }
-// changeBg();
