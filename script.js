@@ -1,6 +1,7 @@
 const screens = document.querySelectorAll('[data-screen]');
 const links = document.querySelectorAll('[data-link]');
 
+// Бургер
 function menuOpen() {
    const burger = document.querySelector('[data-burger]');
    if (burger) {
@@ -13,7 +14,7 @@ menuOpen();
 
 function replaceBg(id) {
    const bg = document.getElementById(id);
-   if(bg){
+   if (screens.length > 0) {
       screens.forEach((screen) => {
          screen.style.display = 'none';
       });
@@ -24,7 +25,7 @@ function replaceBg(id) {
 window.addEventListener('resize', changeBg);
 
 function clickLinkKloseMenu() {
-   if(links.length > 0){
+   if (links.length > 0) {
       links.forEach((link) => {
          link.addEventListener('click', () => {
             if (window.innerWidth < 768) {
@@ -37,13 +38,12 @@ function clickLinkKloseMenu() {
 clickLinkKloseMenu();
 
 function changeBg() {
-   if(links.length > 0) {
+   if (links.length > 0) {
       links.forEach((link) => {
          link.addEventListener('mouseenter', (e) => {
             e.preventDefault();
             replaceBg(e.target.dataset.link);
-      });
-   
+         });
 
          link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -52,7 +52,7 @@ function changeBg() {
       });
    }
 
-   if(screens.length > 0) {
+   if (screens.length > 0) {
       screens.forEach((screen) => {
          if (window.innerWidth > 768) {
             screen.style.display = 'none';
