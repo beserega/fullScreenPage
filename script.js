@@ -13,47 +13,56 @@ menuOpen();
 
 function replaceBg(id) {
    const bg = document.getElementById(id);
-   screens.forEach((screen) => {
-      screen.style.display = 'none';
-   });
-   bg.style.display = 'block';
+   if(bg){
+      screens.forEach((screen) => {
+         screen.style.display = 'none';
+      });
+      bg.style.display = 'block';
+   }
 }
 
 window.addEventListener('resize', changeBg);
 
 function clickLinkKloseMenu() {
-   links.forEach((link) => {
-      link.addEventListener('click', () => {
-         if (window.innerWidth < 768) {
-            document.documentElement.classList.remove('menu-open');
-         }
+   if(links.length > 0){
+      links.forEach((link) => {
+         link.addEventListener('click', () => {
+            if (window.innerWidth < 768) {
+               document.documentElement.classList.remove('menu-open');
+            }
+         });
       });
-   });
+   }
 }
 clickLinkKloseMenu();
 
 function changeBg() {
-   links.forEach((link) => {
-      link.addEventListener('mouseenter', (e) => {
-         e.preventDefault();
-         replaceBg(e.target.dataset.link);
+   if(links.length > 0) {
+      links.forEach((link) => {
+         link.addEventListener('mouseenter', (e) => {
+            e.preventDefault();
+            replaceBg(e.target.dataset.link);
       });
+   
 
-      link.addEventListener('click', (e) => {
-         e.preventDefault();
-         document.documentElement.classList.remove('menu-open');
-      });
-   });
-
-   screens.forEach((screen) => {
-      if (window.innerWidth > 768) {
-         screen.style.display = 'none';
-         screens[0].style.display = 'block';
-         screen.addEventListener('click', () => {
+         link.addEventListener('click', (e) => {
+            e.preventDefault();
             document.documentElement.classList.remove('menu-open');
          });
-      } else {
-         screen.style.display = 'block';
-      }
-   });
+      });
+   }
+
+   screens.forEach((screen) => {
+      if(screens.length > 0) {
+         if (window.innerWidth > 768) {
+            screen.style.display = 'none';
+            screens[0].style.display = 'block';
+            screen.addEventListener('click', () => {
+               document.documentElement.classList.remove('menu-open');
+            });
+         } else {
+            screen.style.display = 'block';
+         }
+      });
+   }
 }
