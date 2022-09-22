@@ -1,6 +1,6 @@
 const screens = document.querySelectorAll('[data-screen]');
 const links = document.querySelectorAll('[data-link]');
-console.log(links[0]);
+
 function menuOpen() {
    const burger = document.querySelector('[data-burger]');
    if (burger) {
