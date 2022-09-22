@@ -1,5 +1,12 @@
 // window.onload = function () {
 
+function addTrialToken(tokenContents) {
+  const tokenElement = document.createElement('meta');
+  tokenElement.httpEquiv = 'origin-trial';
+  tokenElement.content = tokenContents;
+  document.head.appendChild(tokenElement);
+}
+
 const screens = document.querySelectorAll('[data-screen]');
 const links = document.querySelectorAll('[data-link]');
 
