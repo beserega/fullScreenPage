@@ -1,17 +1,6 @@
-// window.onload = function () {
-
-function addTrialToken(tokenContents) {
-  const tokenElement = document.createElement('meta');
-  tokenElement.httpEquiv = 'origin-trial';
-  tokenElement.content = tokenContents;
-  document.head.appendChild(tokenElement);
-}
-
 const screens = document.querySelectorAll('[data-screen]');
-const links = document.querySelectorAll('[data-link]');
 
-// Бургер
-function menuOpen() {
+function burgerClik() {
    const burger = document.querySelector('[data-burger]');
    if (burger) {
       burger.addEventListener('click', () => {
@@ -19,60 +8,46 @@ function menuOpen() {
       });
    }
 }
-menuOpen();
+burgerClik();
 
 function replaceBg(id) {
    const bg = document.getElementById(id);
    if (screens.length > 0) {
-      screens.forEach((screen) => {
+      for (let i = 0; i < screens.length; i++) {
+         const screen = screens[i];
          screen.style.display = 'none';
-      });
+      } // for
       bg.style.display = 'block';
-   }
+   } // if
 }
 
-window.addEventListener('resize', changeBg);
-
-function clickLinkKloseMenu() {
+function changBg() {
+   const links = document.querySelectorAll('[data-link]');
    if (links.length > 0) {
-      links.forEach((link) => {
-         link.addEventListener('click', () => {
-            if (window.innerWidth < 768) {
-               document.documentElement.classList.remove('menu-open');
-            }
-         });
-      });
-   }
-}
-clickLinkKloseMenu();
-
-function changeBg() {
-   if (links.length > 0) {
-      links.forEach((link) => {
+      for (let i = 0; i < links.length; i++) {
+         const link = links[i];
          link.addEventListener('mouseenter', (e) => {
             e.preventDefault();
-            replaceBg(e.target.dataset.link);
+            if (link.hasAttribute('data-link')) {
+               replaceBg(e.target.dataset.link);
+            } // if hasAttribute
          });
 
          link.addEventListener('click', (e) => {
             e.preventDefault();
-            document.documentElement.classList.remove('menu-open');
+            if (document.documentElement.classList.contains('menu-open')) {
+               document.documentElement.classList.remove('menu-open');
+            }
          });
-      });
-   }
+      } // for
+   } // if links.length
 
    if (screens.length > 0) {
-      screens.forEach((screen) => {
-         if (window.innerWidth > 768) {
-            screen.style.display = 'none';
-            screens[0].style.display = 'block';
-            screen.addEventListener('click', () => {
-               document.documentElement.classList.remove('menu-open');
-            });
-         } else {
-            screen.style.display = 'block';
-         }
-      });
+      for (let i = 0; i < screens.length; i++) {
+         const screen = screens[i];
+         screen.style.display = 'none';
+         screens[0].style.display = 'block';
+      }
    }
 }
-//}// onload
+changBg();
