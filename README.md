@@ -13,6 +13,7 @@
 Получаем секцию с определённым ``id="sectionID"`` ``const section = document.getElementById(id);`` Далее циклом ``for`` перебераем все секции (экраны) полученные ранее в начале нашего файла .js <br>
 ``const screens = document.querySelectorAll('[data-screen]');`` по атрибуту ``data-screen`` который есть у каждой секции 
 ```html
+<!-- Базовый html для всех секций -->
 <section data-screen class="screen" id="sectionID"></section>
 ```
 и задаём для всех секций ``display: none;`` при помощи строки ``screen.style.display = 'none';``
