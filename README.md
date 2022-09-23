@@ -38,21 +38,10 @@ function replaceSection(id) {
 }
 ```
 #
+Функция ``changSection()``<br>
+В теле данной функции будем искать в документе все пункты меню. <br>
+Искать их будем по атрибуту ``data-link`` который будет у каждой ссылки.
 ```html
-<button data-burger type="button" class="icon-menu"><span></span></button>
+<a href="#" class="menu__link" data-link="sectionID">section One</a>
 ```
-
-```javascript
-// Отслеживаем клик по кнопке меню (бургеру).
-// И добавляем либо уаляем класс menu-open к <html class="menu-open">
-
-function burgerClik() {
-   const burger = document.querySelector('[data-burger]');
-   if (burger) {
-      burger.addEventListener('click', () => {
-         document.documentElement.classList.toggle('menu-open');
-      });
-   }
-}
-burgerClik();
-```
+> _Забегая несколько в перед скажем что значение_ ``data-link`` _будет равно_ ``id`` _секции которой относится этот пункт меню. По значению атрибута будет определяться нужная секция._
