@@ -6,6 +6,21 @@
 
 ### FullScreenPages без использования различных библиотек и плагинов, на чистом JavaScript.
 
+Описываем функцию ``replaceBg()`` котороя будет принимать один апраметр ``id`` ``replaceBg(id)`` .<br>
+_Эта функция нужна для того чтобы при навидении курспра на пункт меню отследить секцию к которой принадлежит данный пункт меню._
+```javascript
+function replaceSection(id) {
+   const section = document.getElementById(id);
+   if (screens.length > 0) {
+      for (let i = 0; i < screens.length; i++) {
+         const screen = screens[i];
+         screen.style.display = 'none';
+      } // for
+      section.style.display = 'block';
+   } // if
+}
+```
+
 ```html
 <button data-burger type="button" class="icon-menu"><span></span></button>
 ```
