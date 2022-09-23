@@ -39,7 +39,7 @@ function replaceSection(id) {
 ```
 #
 Функция ``changSection()``<br>
-В теле данной функции будем искать в документе все пункты меню. ``const links = document.querySelectorAll('[data-link]');``<br>
+В теле данной функции будем искать в документе все пункты меню.<br> ``const links = document.querySelectorAll('[data-link]');``
 
 Искать их будем по атрибуту ``data-link`` который будет у каждой ссылки.
 ```html
