@@ -208,7 +208,7 @@ changeSection();
 ```
 ### Как видно скрипт содержит всего три небольшие функции и уместился в 59 строк!
 #
-Обязательные атрибуты:
+**Обязательные атрибуты:**<br>
 Для секций (экранов) ``data-screen``
 ```html
 <section data-screen class="screen" id="">
@@ -223,3 +223,32 @@ changeSection();
 ```html
 <button data-burger type="button" class="icon-menu"><span></span></button>
 ```
+<p align="center"><a href="https://beserega.github.io/fullScreenPage/" ><strong>Живой пример</strong></a></p>
+
+#
+
+HTML секций используемый в данной призентации:
+
+```html
+<section data-screen class="screen" id="">
+	<div class="main">
+		<div class="main__wrapper">
+			<div class="main__container">
+				<div class="main__body">
+					<div class="main__item">
+						<h1 class="title">@@pagename</h1>
+						<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+						Temporibus, quo soluta quas recusandae earum deserunt cum 
+						distinctio ipsum perferendis quis adipisci eos autem. 
+						Quas odit sapiente dolores et ex officia.</p>
+						<button type="button" class="btn"><span>Отправить</span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="shadow one"></div> // Дополнительное оформление секции
+	<div class="shadow two"></div> // Дополнительное оформление секции
+</section> <!-- screen -->
+```
+Если нужно чтобы у каждой секции было своё оформление добавить доп. класс к div с классом ``main__wrapper`` на пример ``main__wrapper section-one`` ``main__wrapper section-two`` и.т.д и для каждого этого класса писать свои стили. Данный шаблон не обязателен к использованию также как и названия классов. Анимацию использованую в этой вёрстке можно увидить в файле 
