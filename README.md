@@ -50,16 +50,24 @@ function replaceSection(id) {
 Перебераем все ссылки в массиве при помощи цикла ``for`` и на каждую вешаем оброботчик событий ``addEventListener`` и первым событием будет наведение курсора на ссылку ``"mouseenter"`` и внутри этого события вызовем ранее описаную функцию ``replaceSection(id)``
 
 ```javascript
-for (let i = 0; i < links.length; i++) {
-         const link = links[i];
-         link.addEventListener('mouseenter', (e) => {
-            e.preventDefault(); // Отменить действие браузера по умолчанию для ссылок
-            if (link.hasAttribute('data-link')) { // Проверяем наличие атрибута
-               replaceSection(e.target.dataset.link); // Получаем значение атрибута "data-link='value'" и передаём в параметр "id" функции replaceSection(id)
-            } // if hasAttribute
-         });
+link.addEventListener('mouseenter', (e) => {
+   e.preventDefault(); // Отменить действие браузера по умолчанию для ссылок
+   if (link.hasAttribute('data-link')) { // Проверяем наличие атрибута
+      replaceSection(e.target.dataset.link); // Получаем значение атрибута "data-link='value'" и передаём в параметр "id" функции replaceSection(id)
+   } // if hasAttribute
+});
 ```
 
-Получив значение атрибута ``data-link='value'`` тем самым мы получили ``id`` секции так как говорилось раньше эти значения идентичны.
+Получив значение атрибута ``data-link`` в строке ``replaceSection(e.target.dataset.link)`` тем самым мы получили ``id`` секции так как говорилось раньше эти значения идентичны.
 
 > _В результате получаем следующее: смену экранов при навидении на соответствующий пункт меню._
+
+Далее ещё один оброботчик событий только в этот раз будем обрабатывать ``"click"``
+```javascript
+link.addEventListener('click', (e) => {
+   e.preventDefault(); // Отменить действие браузера по умолчанию для ссылок
+   if (document.documentElement.classList.contains('menu-open')) {
+      document.documentElement.classList.remove('menu-open');
+   }
+});
+```
