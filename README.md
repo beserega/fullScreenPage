@@ -10,7 +10,7 @@
 
 >_Эта функция нужна для того чтобы при навидении курсора на пункт меню отследить секцию к которой принадлежит данный пункт меню._ 
 
-Получаем секцию с определённым ``id="sectionID"`` ``const section = document.getElementById(id);`` Далее циклом ``for`` перебераем все секции (экраны) полученные ранее в начале нашего файла .js 
+Получаем секцию с определённым ``id="sectionID"`` ``const section = document.getElementById(id);`` Далее циклом ``for`` перебераем все секции (экраны) полученные ранее в начале нашего файла .js <br>
 ``const screens = document.querySelectorAll('[data-screen]');`` по атрибуту ``data-screen`` который есть у каждой секции 
 ```html
 <section data-screen class="screen" id="sectionID"></section>
