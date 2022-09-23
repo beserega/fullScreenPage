@@ -5,9 +5,25 @@
 #
 
 ### FullScreenPages без использования различных библиотек и плагинов, на чистом JavaScript.
+#
+Описываем функцию ``replaceSection()`` котороя будет принимать один апраметр ``id`` ``replaceSection(id)`` .<br>
 
-Описываем функцию ``replaceBg()`` котороя будет принимать один апраметр ``id`` ``replaceBg(id)`` .<br>
-_Эта функция нужна для того чтобы при навидении курспра на пункт меню отследить секцию к которой принадлежит данный пункт меню._
+>_Эта функция нужна для того чтобы при навидении курсора на пункт меню отследить секцию к которой принадлежит данный пункт меню._ 
+
+Получаем секцию с определённым ``id="sectionID"`` ``const section = document.getElementById(id);`` Далее циклом ``for`` перебераем все секции (экраны) полученные ранее в начале нашего файла .js 
+``const screens = document.querySelectorAll('[data-screen]');`` по атрибуту ``data-screen`` который есть у каждой секции 
+```html
+<section data-screen class="screen" id="sectionID"></section>
+```
+и задаём для всех секций ``display: none;`` при помощи строки ``screen.style.display = 'none';``
+```html
+<section data-screen class="screen" id="sectionID" style="display: none;"></section>
+```
+а для секции с нужным нам ``id`` задаём ``display: block;`` с помощью строки ``section.style.display = 'block';``
+```html
+<section data-screen class="screen" id="sectionID" style="display: block;"></section>
+```
+Весь код функции:
 ```javascript
 function replaceSection(id) {
    const section = document.getElementById(id);
