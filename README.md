@@ -66,8 +66,90 @@ link.addEventListener('mouseenter', (e) => {
 ```javascript
 link.addEventListener('click', (e) => {
    e.preventDefault(); // Отменить действие браузера по умолчанию для ссылок
-   if (document.documentElement.classList.contains('menu-open')) {
-      document.documentElement.classList.remove('menu-open');
+   if (document.documentElement.classList.contains('menu-open')) { // Проверяем наличие класса у тега <html class="menu-open">
+      document.documentElement.classList.remove('menu-open'); // Если такой класс есть то удоляем этот класс
    }
 });
+```
+
+Класс ``menu-open`` мы прописываем тегу ``html`` при клике на кнопку меню (бургер) при помощи следующий функции.
+```javascript
+function burgerClik() {
+   const burger = document.querySelector('[data-burger]');
+   if (burger) {
+      burger.addEventListener('click', () => {
+         document.documentElement.classList.toggle('menu-open');
+      });
+   }
+}
+burgerClik();
+```
+У кнопки меню (бургер) также присутствует некий атрибут, а именно ``data-burger``
+```html
+<button data-burger type="button" class="icon-menu"><span></span></button>
+```
+Далее наша функция ``changSection()`` содержит ещё один цикл ``for`` в котором будем переберать наши секции выше мы это уже делали в функции ``replaceSection(id)`` И также задаём для всех секций ``display: none;`` при помощи строки ``screen.style.display = 'none';`` а для первой секции будет ``screens[0].style.display = 'block'`` делаем это для того чтоб скрыть все секции кроме первой чтобы не было горизонтального скрола.<br>
+Далее обработчик собитий ``click`` где при клике по секции будем удолять класс ``menu-open`` у ``html`` тем самым будем закрывать меню.
+```javascript
+for (let i = 0; i < screens.length; i++) {
+   const screen = screens[i];
+   screen.style.display = 'none';
+   screens[0].style.display = 'block';
+
+   screen.addEventListener('click', () => {
+      if (document.documentElement.classList.contains('menu-open')) {
+         document.documentElement.classList.remove('menu-open');
+      }
+   });
+}
+```
+Весь код функции:
+```javascript
+function replaceSection(id) {
+   const section = document.getElementById(id);
+   if (screens.length > 0) {
+      for (let i = 0; i < screens.length; i++) {
+         const screen = screens[i];
+         screen.style.display = 'none';
+      } // for
+      section.style.display = 'block';
+   } // if
+}
+
+function changSection() {
+   const links = document.querySelectorAll('[data-link]');
+   if (links.length > 0) {
+      for (let i = 0; i < links.length; i++) {
+         const link = links[i];
+         link.addEventListener('mouseenter', (e) => {
+            e.preventDefault();
+            if (link.hasAttribute('data-link')) {
+               replaceSection(e.target.dataset.link);
+            } // if hasAttribute
+         });
+
+         link.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (document.documentElement.classList.contains('menu-open')) {
+               document.documentElement.classList.remove('menu-open');
+            }
+         });
+      } // for
+   } // if links.length
+
+   if (screens.length > 0) {
+      for (let i = 0; i < screens.length; i++) {
+         const screen = screens[i];
+         screen.style.display = 'none';
+         screens[0].style.display = 'block';
+
+         screen.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('menu-open')) {
+               document.documentElement.classList.remove('menu-open');
+            }
+         });
+      }
+   }
+}
+changSection();
 ```
