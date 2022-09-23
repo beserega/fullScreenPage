@@ -38,7 +38,7 @@ function replaceSection(id) {
 }
 ```
 #
-Функция ``changSection()``<br>
+Функция ``changeSection()``<br>
 В теле данной функции будем искать в документе все пункты меню.<br> ``const links = document.querySelectorAll('[data-link]');``
 
 Искать их будем по атрибуту ``data-link`` который будет у каждой ссылки.
@@ -88,7 +88,7 @@ burgerClik();
 ```html
 <button data-burger type="button" class="icon-menu"><span></span></button>
 ```
-Далее наша функция ``changSection()`` содержит ещё один цикл ``for`` в котором будем переберать наши секции выше мы это уже делали в функции ``replaceSection(id)`` И также задаём для всех секций ``display: none;`` при помощи строки ``screen.style.display = 'none';`` а для первой секции будет ``screens[0].style.display = 'block'`` делаем это для того чтоб скрыть все секции кроме первой чтобы не было горизонтального скрола.<br>
+Далее наша функция ``changeSection()`` содержит ещё один цикл ``for`` в котором будем переберать наши секции выше мы это уже делали в функции ``replaceSection(id)`` И также задаём для всех секций ``display: none;`` при помощи строки ``screen.style.display = 'none';`` а для первой секции будет ``screens[0].style.display = 'block'`` делаем это для того чтоб скрыть все секции кроме первой чтобы не было горизонтального скрола.<br>
 Далее обработчик собитий ``click`` где при клике по секции будем удолять класс ``menu-open`` у ``html`` тем самым будем закрывать меню.
 ```javascript
 for (let i = 0; i < screens.length; i++) {
@@ -105,18 +105,7 @@ for (let i = 0; i < screens.length; i++) {
 ```
 Весь код функции:
 ```javascript
-function replaceSection(id) {
-   const section = document.getElementById(id);
-   if (screens.length > 0) {
-      for (let i = 0; i < screens.length; i++) {
-         const screen = screens[i];
-         screen.style.display = 'none';
-      } // for
-      section.style.display = 'block';
-   } // if
-}
-
-function changSection() {
+function changeSection() {
    const links = document.querySelectorAll('[data-link]');
    if (links.length > 0) {
       for (let i = 0; i < links.length; i++) {
@@ -151,5 +140,5 @@ function changSection() {
       }
    }
 }
-changSection();
+changeSection();
 ```
