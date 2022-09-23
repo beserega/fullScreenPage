@@ -205,5 +205,21 @@ function changeSection() {
    }
 }
 changeSection();
-
+```
+### Как видно скрипт содержит всего три небольшие функции и уместился в 59 строк!
+#
+Обязательные атрибуты:
+Для секций (экранов) ``data-screen``
+```html
+<section data-screen class="screen" id="">
+	
+</section> <!-- screen -->
+```
+Для пунктов меню ``data-link``
+```html
+<a href="#" class="menu__link" data-link="sectionOne">section One</a>
+```
+Для бургера ``data-burger``
+```html
+<button data-burger type="button" class="icon-menu"><span></span></button>
 ```
