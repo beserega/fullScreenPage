@@ -47,6 +47,12 @@ function changBg() {
          const screen = screens[i];
          screen.style.display = 'none';
          screens[0].style.display = 'block';
+         
+         screen.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('menu-open')) {
+               document.documentElement.classList.remove('menu-open');
+            }
+         });
       }
    }
 }
