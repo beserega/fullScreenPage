@@ -45,12 +45,9 @@ function changBg() {
    if (screens.length > 0) {
       for (let i = 0; i < screens.length; i++) {
          const screen = screens[i];
-         window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-               screen.style.display = 'none';
-               screens[0].style.display = 'block';
-            }
-         });
+            screen.style.display = 'none';
+            screens[0].style.display = 'block';
+         
          
          screen.addEventListener('click', () => {
             if (document.documentElement.classList.contains('menu-open')) {
